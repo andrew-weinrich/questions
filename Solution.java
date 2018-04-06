@@ -29,8 +29,7 @@ public class Solution {
         
         // use a dummy node at the beginning to start the list
         // the dummy node will be removed before returning
-        ListNode output = new ListNode();
-        output.val = -1;
+        ListNode output = new ListNode(-1);
         
         ListNode current = output;
         
@@ -38,20 +37,19 @@ public class Solution {
         while (next1 != null && next2 != null) {
             if (next1 != null && next1.val >= current.val) {
                 // create a new node for the output, put onto the end
-                ListNode newNode = new ListNode();
-                newNode.val = next1.val;
-                current.next = newNode;
+                ListNode newNode = new ListNode(next1.val);
                 
                 // move both current output and next1 nodes forward
-                current = newNode;
+                current.next = newNode;
+                current = current.next;
                 next1 = next1.next;
             }
             else if (next2 != null && next2.val >= current.val) {
-                ListNode newNode = new ListNode();
+                ListNode newNode = new ListNode(next2.val);
                 newNode.val = next2.val;
                 
                 current.next = newNode;
-                current = newNode;
+                current = current.next;
                 next2 = next2.next;
             }
         }
@@ -67,7 +65,7 @@ public class Solution {
         int number = 0;
         int decimalPlace = 0;
         while (node != null) {
-            number += (node.val * Math.pow(10, decimalPlace);
+            number += (node.val * Math.pow(10, decimalPlace));
             decimalPlace++;
         }
         
@@ -82,13 +80,12 @@ public class Solution {
         int sum = number1 + number2;
         
         // also use a dummy node as the beginning
-        ListNode output = new ListNode();
+        ListNode output = new ListNode(-1);
         
         while (sum > 0) {
             int digit = sum % 10;
             
-            ListNode node = new ListNode();
-            node.val = digit;
+            ListNode node = new ListNode(digit);
             output.next = node;
             
             sum /= 10;
