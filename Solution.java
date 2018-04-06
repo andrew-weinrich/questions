@@ -61,8 +61,41 @@ public class Solution {
     }
     
     
+    
+    private int calculateNumber(ListNode list) {
+        ListNode node = list;
+        int number = 0;
+        int decimalPlace = 0;
+        while (node != null) {
+            number += (node.val * Math.pow(10, decimalPlace);
+            decimalPlace++;
+        }
+        
+        return number;
+    }
+    
+    
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        throw new NotImplementedException();
+        int number1 = calculateNumber(l1);
+        int number2 = calculateNumber(l2);
+        
+        int sum = number1 + number2;
+        
+        // also use a dummy node as the beginning
+        ListNode output = new ListNode();
+        
+        while (sum > 0) {
+            int digit = sum % 10;
+            
+            ListNode node = new ListNode();
+            node.val = digit;
+            output.next = node;
+            
+            sum /= 10;
+        }
+        
+        
+        return output.next;
     }
 }
 
