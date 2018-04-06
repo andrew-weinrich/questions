@@ -23,31 +23,39 @@ public class Solution {
     // both lists are sorted
     // all numbers are positive
     // ListNode object are treated as immutable (like cons cells in LISP)
+    //
+    // note: this is done procedurally in Java style. Done in LISP, it would be much
+    // simpler and more elegant
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode next1 = l1;
-        ListNode next2 = l2;
-        
         // use a dummy node at the beginning to start the list
         // the dummy node will be removed before returning
         ListNode output = new ListNode(-1);
-        
         ListNode current = output;
         
+        // current elements of each list
+        ListNode next1 = l1;
+        ListNode next2 = l2;
+        
         // keep going until we reach the end of both lists
-        while (next1 != null && next2 != null) {
-            if (next1 != null && next1.val >= current.val) {
-                // create a new node for the output, put onto the end
-                ListNode newNode = new ListNode(next1.val);
-                
-                // move both current output and next1 nodes forward
+        while (next1 != null || next2 != null) {
+            // if one list is empty, its "current value" will be set arbitrarily high
+            int nextVal1 = Integer.MAX_VALUE;
+            int nextVal2 = Integer.MAX_VALUE;
+            
+            if (next1 != null)
+                nextVal1 = next1.val;
+            if (next2 != null)
+                nextVal2 = next2.val;
+            
+            // take the least of the two next values and advance that list's pointer
+            if (nextVal1 < nextVal2){
+                ListNode newNode = new ListNode(nextVal1);
                 current.next = newNode;
                 current = current.next;
                 next1 = next1.next;
             }
-            else if (next2 != null && next2.val >= current.val) {
-                ListNode newNode = new ListNode(next2.val);
-                newNode.val = next2.val;
-                
+            else {
+                ListNode newNode = new ListNode(nextVal2);
                 current.next = newNode;
                 current = current.next;
                 next2 = next2.next;
