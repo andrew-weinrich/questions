@@ -17,9 +17,10 @@ public class Test {
         testMerge4();
         
         System.out.println("Testing testAdd()");
+        testAdd0();
         testAdd1();
-        //testAdd2();
-        //testAdd3();
+        testAdd2();
+        testAdd3();
     }
     
     
@@ -136,44 +137,34 @@ public class Test {
         }
     }
     
-
-
-    
-    private static void testAdd1() {
-        testAdd(1,
+    // extra test added for debugging
+    private static void testAdd0() {
+        testAdd(0,
                 Util.buildList(new int[]{ 3, 2, 1 }),
                 Util.buildList(new int[]{ 6, 5, 4 }),
                 Util.buildList(new int[]{ 9, 7, 5 }));
-        
     }
-    /*
+    
     private static void testAdd1() {
         testAdd(1,
-                buildList(new int[]{ 2, 4, 3 }),
-                buildList(new int[]{ 5, 6, 4 }),
-                buildList(new int[]{ 7, 0, 8 }));
-        
+                Util.buildList(new int[]{ 2, 4, 3 }),
+                Util.buildList(new int[]{ 5, 6, 4 }),
+                Util.buildList(new int[]{ 7, 0, 8 }));
     }
-    */
-
-
-
-
-
-
-
-
+    
+    private static void testAdd2() {
+        testAdd(2,
+                Util.buildList(new int[]{ 1 }),
+                Util.buildList(new int[]{ 9, 9 }),
+                Util.buildList(new int[]{ 0, 0, 1 }));
+    }
+    
+    private static void testAdd3() {
+        testAdd(3,
+                Util.buildList(new int[]{ 1 }),
+                Util.buildList(new int[]{ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9  }),
+                Util.buildList(new int[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }));
+    }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
