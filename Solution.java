@@ -75,6 +75,7 @@ public class Solution {
         while (node != null) {
             number += (node.val * Math.pow(10, decimalPlace));
             decimalPlace++;
+            node = node.next;
         }
         
         return number;
@@ -86,17 +87,19 @@ public class Solution {
         int number2 = calculateNumber(l2);
         
         int sum = number1 + number2;
+        System.out.println("Sum: " + sum);
         
         // also use a dummy node as the beginning
         ListNode output = new ListNode(-1);
+        ListNode current = output;
         
         while (sum > 0) {
             int digit = sum % 10;
             
             ListNode node = new ListNode(digit);
-            output.next = node;
-            
-            sum /= 10;
+            current.next = node;
+            current = output.next;
+            sum = sum / 10;
         }
         
         
