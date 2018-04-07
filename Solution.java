@@ -102,7 +102,6 @@ public class Solution {
             sum = sum / 10;
         }
         
-        
         return output.next;
     }
 }
